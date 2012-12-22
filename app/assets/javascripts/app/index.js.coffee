@@ -14,10 +14,14 @@
 class App extends Spine.Controller
   constructor:(@el,@current_user) ->
     super
+<<<<<<< HEAD
     @append(@chatrooms = new App.Chatrooms(@current_user))
     # @append(new App.Users(@current_user))
     # @append(new App.Messages(@current_user))
     
+=======
+    @append(@messages = new App.Messages(@current_user))
+>>>>>>> master
 	Spine.Route.setup()    
 
 window.App = App

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="messages_container">
   <h1>Chat</h1>
   <div id="messages">
@@ -17,4 +18,25 @@
       <button>send</button>
     </form>
   </div>
+=======
+<h1>Chat</h1>
+<div id="messages">
+  <% for message in @messages: %>
+    <ul>
+      <li class='message' data-id='<%= message.id %>'>
+        <span class='sender'><%= message.sender %>:</span>
+        <span class='content'><%= message.content %></span>
+      </li>
+    </ul>
+  <% end %>
+</div>
+<div id="new_message">
+  <form>
+    <input type="hidden" name="sender" value="<%= @current_user %>" required>
+    <span>
+      <input type="text" name="content"  value="<%= @content %>" required autofocus>
+      <button>send</button>
+    </span>
+  </form>
+>>>>>>> master
 </div>

@@ -13,9 +13,25 @@ class App.Messages extends Spine.Controller
   constructor: (@current_user) ->
     super
     Message.bind 'refresh change', @render
+    
+    faye = new Faye.Client("http://localhost:9292/faye")
+    faye.subscribe "/chat", (data) =>
+      @message_received(data)
     Message.fetch()
     
+  message_received: (data) ->
+    console.log("message received")
+    Message.fetch()
+    #@message = Message.create({
+    #  sender: @current_user
+    #  content: data
+    #})
+    
+    #Message.trigger('refresh')
+    
   render: =>
+    console.log("render")
+
     messages = Message.all()
     @html @view('messages/index')({
       messages: messages,
@@ -23,7 +39,13 @@ class App.Messages extends Spine.Controller
     console.log("msg render")
   send: (e)->
     e.preventDefault()
+<<<<<<< HEAD
     message = Message.fromForm(e.target).save()
   refresh: =>
     console.log("fetching msg")
     Message.fetch()
+=======
+    @message = Message.fromForm(e.target).save()
+    
+  
+>>>>>>> master
