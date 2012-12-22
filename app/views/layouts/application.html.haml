@@ -6,12 +6,9 @@
     = javascript_include_tag "application", 'http://localhost:9292/faye.js'
     = csrf_meta_tags
   %body
-<<<<<<< HEAD
-=======
     %nav
       %ul
         %li
           = link_to 'sign in' , new_user_session_path unless current_user
           = link_to 'sign out', destroy_user_session_path, method: :delete if current_user
->>>>>>> master
     = yield
