@@ -4,6 +4,8 @@ gem 'rails', '3.2.9'
 gem 'jquery-rails'
 gem 'devise'
 gem 'haml'
+gem 'faye'
+gem 'thin'
 
 # Optional support for eco templates
 gem 'eco' 

@@ -44,16 +44,26 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+    
+    require 'eventmachine'
+    EM.run {
+      client = Faye::Client.new('http://localhost:9292/faye')
+      client.subscribe('/chat') do |message|
+        puts "*"*80
+        puts "subscribing to /chat on server side"
+        puts message.inspect
       end
+
+      client.publish('/chat', 'message' => {sender: @message.sender, content: @message.content})
+    }
+    
+    
+    if @message.save
+      render json: @message, status: :created, location: @message
+    else
+      render json: @message.errors, status: :unprocessable_entity
     end
+    
   end
 
   # PUT /messages/1
