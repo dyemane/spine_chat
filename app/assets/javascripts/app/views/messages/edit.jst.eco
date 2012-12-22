@@ -1,0 +1,27 @@
+<h1>Edit Message</h1>
+
+<a data-type="back">Back</a>
+
+<form>
+  
+  <label>
+    <span>Sender</span>
+    <input 
+      type="text" name="sender" 
+      value="<%= @sender %>" required
+ autofocus>
+    <br />
+  </label>
+  
+  <label>
+    <span>Content</span>
+    <input 
+      type="text" name="content" 
+      value="<%= @content %>" required
+>
+    <br />
+  </label>
+  
+  <button>Edit</button>
+
+</form>

@@ -1,0 +1,26 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#messages{
+  border: 1px solid black;
+  height: 200px;
+  width: 400px;
+  overflow: scroll;
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .message{
+    .sender{ font-size: small; color: #999}
+    .content{ color: #333}
+  }
+}
+
+#new_message{
+  input[type='text']{
+    border: 1px solid #ccc;
+  }
+}

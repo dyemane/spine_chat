@@ -1,0 +1,9 @@
+- if current_user
+  #app
+  javascript:
+    jQuery(function(){
+    app = new App({el: $("#app"), current_user: "#{current_user.email}"})
+    });
+- else
+  %h2
+    Login required. Login #{link_to "here", messages_url}
