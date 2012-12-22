@@ -1,14 +1,7 @@
 - if current_user
   #app
   :javascript
-<<<<<<< HEAD
-    jQuery(function(){
-      app = new App({el: $("#app"), current_user: "#{current_user.email}"})
-    });
-=======
     $(function(){app = new App({el: $("#app"), current_user: "#{current_user.email}"})});
-  
->>>>>>> master
 - else
   %h2
     Login required. Login #{link_to "here", messages_url}
