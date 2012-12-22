@@ -9,7 +9,7 @@ $.fn.item = ->
 class App.Messages extends Spine.Controller
   events:
     'submit form': 'send'
-
+    
   constructor: (@current_user) ->
     super
     Message.bind 'refresh change', @render
@@ -20,7 +20,10 @@ class App.Messages extends Spine.Controller
     @html @view('messages/index')({
       messages: messages,
       current_user: @current_user})
-  
+    console.log("msg render")
   send: (e)->
     e.preventDefault()
     message = Message.fromForm(e.target).save()
+  refresh: =>
+    console.log("fetching msg")
+    Message.fetch()
