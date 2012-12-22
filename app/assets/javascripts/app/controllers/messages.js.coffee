@@ -20,25 +20,25 @@ class App.Messages extends Spine.Controller
     Message.fetch()
     
   message_received: (data) ->
-    console.log("message received")
+    console.log("Incoming message received")
     Message.fetch()
-    #@message = Message.create({
-    #  sender: @current_user
-    #  content: data
-    #})
-    
-    #Message.trigger('refresh')
     
   render: =>
-    console.log("render")
-
     messages = Message.all()
+    
     @html @view('messages/index')({
       messages: messages,
       current_user: @current_user})
-  
+    
+    @scroll_down()
+    
   send: (e)->
     e.preventDefault()
     @message = Message.fromForm(e.target).save()
     
-  
+  scroll_down: ->
+    console.log("scroll down")
+    $("#messages").scrollTop($("#messages")[0].scrollHeight);  
+
+    
+    
