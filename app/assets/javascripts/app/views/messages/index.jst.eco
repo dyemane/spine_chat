@@ -12,7 +12,9 @@
 <div id="new_message">
   <form>
     <input type="hidden" name="sender" value="<%= @current_user %>" required>
-    <input type="text" name="content"  value="<%= @content %>" required autofocus>
-    <button>send</button>
+    <span>
+      <input type="text" name="content"  value="<%= @content %>" required autofocus>
+      <button>send</button>
+    </span>
   </form>
 </div>
