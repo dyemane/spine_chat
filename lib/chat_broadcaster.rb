@@ -1,10 +1,10 @@
 module ChatBroadcaster
   require 'eventmachine'
   
-  def self.client
+  def self.client(channel = '/chat')
     unless @client
       @client = Faye::Client.new('http://localhost:9292/faye')
-      @client.subscribe('/chat') do |msg|
+      @client.subscribe(channel) do |msg|
         Rails.logger.info "\n\n Server subscribing to channel /chat"
       end
     end

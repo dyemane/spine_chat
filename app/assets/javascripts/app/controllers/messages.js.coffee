@@ -9,14 +9,11 @@ $.fn.item = ->
 class App.Messages extends Spine.Controller
   events:
     'submit form': 'send'
-
+    
   constructor: (@current_user) ->
     super
     Message.bind 'refresh change', @render
     
-    faye = new Faye.Client("http://localhost:9292/faye")
-    faye.subscribe "/chat", (data) =>
-      @message_received(data)
     Message.fetch()
     
   message_received: (data) ->
@@ -29,7 +26,7 @@ class App.Messages extends Spine.Controller
     @html @view('messages/index')({
       messages: messages,
       current_user: @current_user})
-    
+
     @scroll_down()
     
   send: (e)->
@@ -40,5 +37,6 @@ class App.Messages extends Spine.Controller
     console.log("scroll down")
     $("#messages").scrollTop($("#messages")[0].scrollHeight);  
 
-    
-    
+  refresh: =>
+    Message.fetch()
+

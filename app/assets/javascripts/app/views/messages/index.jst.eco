@@ -1,24 +1,22 @@
-<h1>Chat</h1>
-
-<div id="messages">
-  <ul>
-    <% for message in @messages: %>
-    
+<div id="messages_container">
+  <h1>Chat</h1>
+  <div id="messages">
+    <ul>
+      <% for message in @messages: %>
         <li class='message' data-id='<%= message.id %>'>
           <span class='sender'><%= message.sender %>:</span>
           <span class='content'><%= message.content %></span>
         </li>
+      <% end %>
+    </ul>
+  </div>
 
-    <% end %>
-  </ul>
-</div>
-
-<div id="new_message">
-  <form>
-    <input type="hidden" name="sender" value="<%= @current_user %>" required>
-    <span>
+  <div id="new_message">
+    <form>
+      <input type="hidden" name="sender" value="<%= @current_user %>" required>
       <input type="text" name="content"  value="<%= @content %>" required autofocus>
       <button>send</button>
-    </span>
-  </form>
+    </form>
+  </div>
+
 </div>
