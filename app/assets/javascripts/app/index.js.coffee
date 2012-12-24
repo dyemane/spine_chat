@@ -15,6 +15,8 @@ class App extends Spine.Controller
   constructor:(@el,@current_user) ->
     super
     @append(@chatrooms = new App.Chatrooms(@current_user))
+    @append(@tic_tac_toe = new App.TicTacToe)
+    
 	Spine.Route.setup()    
 
 window.App = App

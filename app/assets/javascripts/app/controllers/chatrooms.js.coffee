@@ -25,7 +25,8 @@ class App.Chatrooms extends Spine.Controller
     @append(@messages)
   
   refresh: (e)->
-    @messages.refresh()
-    @users.refresh()
+    App.Message.fetch()
+    #@messages.refresh()
+    #@users.refresh()
     
     
